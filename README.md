@@ -1,0 +1,2 @@
+- Sharing my backend learning journey with Dr. Angela Yu!
+- Link to course: [The Complete Full-Stack Web Development Bootcamp](https://www.udemy.com/course/the-complete-web-development-bootcamp/)
