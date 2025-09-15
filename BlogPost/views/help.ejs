@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+    <%- include("partials/header-image.ejs", { titleHTML: "How Can We<br> Help You Today?" }) %>
+        <section class="justify-center mt-5">
+            <div>
+                <form class="help-form" action="/help" method="post" enctype="multipart/form-data">
+                    <% if (locals.message && message.length > 0) { %>
+                        <h1><%= message %></h1>
+                    <% } else { %>
+                        <h1>Contact Us</h1>
+                        <div class="form-group full-width">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+    
+                        <div class="form-group full-width">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Contact Email" required>
+                        </div>
+    
+                        <div class="form-group full-width">
+                            <label for="subject">Subject</label>
+                            <textarea id="subject" name="subject" rows="6"
+                                placeholder="Write your subject here..." required></textarea>
+                        </div>
+    
+                        <div class="form-group full-width submit-button">
+                            <input type="submit" value="Send">
+                        </div>
+                    <% } %>
+                </form>
+            </div>
+        </section>
+        <%- include("partials/footer.ejs") %>

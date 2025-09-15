@@ -1,0 +1,65 @@
+<%- include("partials/header.ejs") %>
+    <section class="flex-column">
+        <article class="post">
+            <div class="author-time">
+                    <div class="align-top gap-1">
+                        <img src="/images/user1.jpg" alt="">
+                        <div class="profile">
+                            <p id="author"><%= post['author'] %></p>
+                            <p id="field"><%= post['authorField'] %></p>
+                        </div>
+                    </div>
+                    <p id="date"><%= post['date'] %></p>
+            </div>
+            <span class="title"><%= post['title'] %></span>
+            <div class="post-image">
+                <img src="<%= post['postCoverPicture'] %>" alt="profile-picture">
+            </div>
+                <p class="description"><%= post['description'] %>
+                </p>
+                <hr class="post-separator">
+            <div class="post-footer">
+                <div class="likes-views">
+                    <form action="/like-post/<%= post['id'] %>" method="POST" style="display: inline;">
+                        <button type="submit" class="like-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                            </svg>
+                            <span>
+                                <%= post['likes'] %>
+                            </span>
+                        </button>
+                    </form>
+                    <div class="views">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye-fill"
+                            viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                        </svg>
+                        <span>
+                            <%= post['views'] %>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <section class="suggested">
+            <span class="justify-center mb-2">See More</span>
+            <% if (locals.suggested_posts.length> 0) { %>
+            <% suggested_posts.forEach((post, i)=> { %>
+            <article class="suggested-post">
+                <h1><a href="<%= post['id']%>"><%= post['title'] %></a></h1>
+                <div class="gap-half preview-footer thin font-16">
+                    <span><%= post['date'] %></span>
+                </div>
+            </article>
+            <hr class="post-separator">
+            <% }); %>
+            <% } else { %>
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.5rem; margin: 0; color: #666;">There are no posts at the
+                    moment.</p>
+            <%} %>
+        </section>
+    </section>
+    <%- include("partials/footer.ejs") %>
